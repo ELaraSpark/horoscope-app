@@ -1,0 +1,197 @@
+/* Basic Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Slightly more modern font */
+  line-height: 1.6;
+  padding: 20px;
+  /* Dark galaxy background */
+  background-color: #0a043c; /* Deep blue */
+  background-image: linear-gradient(to bottom right, #0a043c, #1e0a4f, #3c1053); /* Gradient */
+  color: #e0e0e0; /* Light text color */
+  min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+/* Remove max-width and adjust padding/margin for full width */
+.App {
+  /* max-width: 800px; */ /* Removed */
+  margin: 0; /* Removed auto margin */
+  padding: 30px 5%; /* Add padding based on viewport width */
+  min-height: 100vh; /* Ensure app container also fills height */
+  /* Semi-transparent dark background for the main container */
+  background-color: rgba(10, 4, 60, 0.75); /* Slightly less opaque */
+  border: 1px solid #5a4fcf; /* Purple border */
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(90, 79, 207, 0.3); /* Subtle purple glow */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 35px;
+  color: #ffffff; /* White title */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Slight glow */
+  font-size: 2.5em;
+}
+
+h2 {
+  color: #a79aff; /* Lighter purple */
+  margin-bottom: 15px;
+  border-bottom: 1px solid #5a4fcf; /* Purple border */
+  padding-bottom: 8px;
+  font-size: 1.8em;
+}
+
+h3 {
+  color: #c0c0ff; /* Light lavender */
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 35px;
+  padding: 25px;
+  background-color: rgba(30, 10, 79, 0.7); /* Darker purple transparent */
+  border-radius: 8px;
+  border: 1px solid #3c1053;
+}
+
+.selector-container,
+.input-container {
+  margin: 10px; /* Add some spacing */
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #e0e0e0; /* Light text */
+}
+
+select,
+input[type="number"] {
+  padding: 12px;
+  border: 1px solid #5a4fcf; /* Purple border */
+  background-color: #1e0a4f; /* Dark input background */
+  color: #ffffff; /* White text in input */
+  border-radius: 5px;
+  min-width: 180px;
+}
+
+select option {
+  background-color: #1e0a4f;
+  color: #ffffff;
+}
+
+/* Results Section */
+.results-section {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly larger min width */
+  gap: 35px;
+}
+
+.western-results,
+.chinese-results {
+  padding: 25px;
+  border: 1px solid #3c1053; /* Darker purple border */
+  border-radius: 8px;
+  background-color: rgba(30, 10, 79, 0.6); /* Dark purple transparent */
+}
+
+/* Horoscope Display */
+.horoscope-display .reading-section {
+  margin-bottom: 25px;
+}
+
+.horoscope-display .reading-section h3 {
+  font-size: 1.2em; /* Slightly larger */
+  color: #a79aff; /* Lighter purple */
+  margin-bottom: 8px;
+}
+
+.horoscope-display p { /* Style paragraphs within readings */
+  color: #d0d0ff; /* Very light lavender */
+}
+
+.horoscope-display.loading {
+  text-align: center;
+  padding: 25px;
+  color: #c0c0ff; /* Light lavender */
+  font-style: italic;
+}
+
+/* Error Message Styling */
+.horoscope-display.error {
+  text-align: center;
+  padding: 25px;
+  color: #ffdddd; /* Light red text */
+  background-color: rgba(220, 53, 69, 0.5); /* Semi-transparent red background */
+  border: 1px solid #dc3545; /* Red border */
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+
+/* Chinese Zodiac Display */
+.chinese-zodiac-display p {
+  margin-bottom: 12px;
+  color: #d0d0ff; /* Very light lavender */
+}
+
+.chinese-zodiac-display strong {
+  color: #ffffff; /* White for emphasis */
+}
+
+/* Flower Display */
+.flower-display {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px dashed #5a4fcf; /* Dashed purple border */
+}
+
+.flower-display h3 {
+  font-size: 1.1em;
+  color: #c0c0ff; /* Light lavender */
+}
+
+.flower-display p { /* Flower name */
+  color: #ffffff;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.flower-image-placeholder {
+  margin-top: 15px;
+  padding: 25px;
+  border: 1px dashed #a79aff; /* Dashed lighter purple */
+  background-color: rgba(10, 4, 60, 0.5); /* Dark blue transparent */
+  text-align: center;
+  color: #a79aff; /* Lighter purple text */
+  font-style: italic;
+  border-radius: 5px;
+  min-height: 120px; /* Give it some size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styling for the displayed Zodiac Symbol */
+.zodiac-symbol-display {
+  display: block; /* Make it a block element */
+  text-align: center; /* Center it */
+  font-size: 3em; /* Make it large */
+  color: #ffffff; /* White color */
+  margin-top: -20px; /* Adjust position relative to HoroscopeDisplay title */
+  margin-bottom: 15px; /* Add space before the flower display */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Add glow */
+}
