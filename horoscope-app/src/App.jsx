@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import ZodiacSelector from './components/ZodiacSelector';
 import BirthYearInput from './components/BirthYearInput';
+import TarotReadingPage from './components/TarotReadingPage';
 import HoroscopeDisplay from './components/HoroscopeDisplay';
 import ChineseZodiacDisplay from './components/ChineseZodiacDisplay';
 import FlowerDisplay from './components/FlowerDisplay';
+import CardHistoryView from './components/CardHistoryView'; // Import the history view
 import { westernZodiac, getChineseZodiacInfo } from './data/zodiacMappings';
 import { getHoroscopeReadings } from './services/horoscopeAPI';
-import './App.css'; // We'll add styles later
+import { CardHistoryProvider } from './context/CardHistoryContext'; // Import the provider
+import './App.css';
 
 function App() {
+  const [currentView, setCurrentView] = useState('horoscope'); // 'horoscope', 'tarot', or 'history'
   const [selectedSign, setSelectedSign] = useState('');
   const [birthYear, setBirthYear] = useState('');
   const [horoscopeReadings, setHoroscopeReadings] = useState(null);
@@ -60,10 +64,8 @@ function App() {
   const chineseFlowerInfo = chineseZodiacInfo ? { flower: chineseZodiacInfo.flower, image: chineseZodiacInfo.image } : null;
 
 
-  return (
-    <div className="App">
-      <h1>Horoscope Finder</h1>
-
+  const renderHoroscopeView = () => (
+    <>
       <div className="input-section">
         <ZodiacSelector
           westernZodiac={westernZodiac}
@@ -101,7 +103,49 @@ function App() {
            </div>
         )}
       </div>
-    </div>
+    </>
+  );
+
+  return (
+    <CardHistoryProvider> {/* Wrap the entire app content */}
+      <div className="App">
+        <h1>
+          {currentView === 'horoscope' && 'Horoscope Finder'}
+          {currentView === 'tarot' && 'Tarot Reading'}
+          {currentView === 'history' && 'Reading History'}
+        </h1>
+
+      {/* Navigation Buttons */}
+      <div className="navigation-buttons" style={{ marginBottom: '20px', textAlign: 'center' }}>
+        <button
+          onClick={() => setCurrentView('horoscope')}
+          disabled={currentView === 'horoscope'}
+          style={{ marginRight: '10px' }}
+        >
+          View Horoscopes
+        </button>
+        <button
+          onClick={() => setCurrentView('tarot')}
+          disabled={currentView === 'tarot'}
+          style={{ marginRight: '10px' }}
+        >
+          Get Tarot Reading
+        </button>
+        <button
+          onClick={() => setCurrentView('history')}
+          disabled={currentView === 'history'}
+        >
+          View History
+        </button>
+      </div>
+
+      {/* Conditional Rendering based on view */}
+      {currentView === 'horoscope' && renderHoroscopeView()}
+      {currentView === 'tarot' && <TarotReadingPage />}
+      {currentView === 'history' && <CardHistoryView />}
+
+      </div>
+    </CardHistoryProvider> /* Close the provider */
   );
 }
 

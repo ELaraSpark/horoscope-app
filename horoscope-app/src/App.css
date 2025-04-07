@@ -195,3 +195,264 @@ select option {
   margin-bottom: 15px; /* Add space before the flower display */
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Add glow */
 }
+
+/* --- Card History View Styles --- */
+
+.card-history-container {
+  padding: 20px;
+  background-color: rgba(30, 10, 79, 0.6); /* Consistent background */
+  border-radius: 8px;
+  border: 1px solid #3c1053;
+  margin-top: 20px;
+}
+
+.card-history-container h2 {
+  margin-bottom: 25px; /* More space below title */
+}
+
+.loading-message,
+.empty-history-message {
+  text-align: center;
+  padding: 30px;
+  font-style: italic;
+  color: #c0c0ff;
+}
+
+.clear-button {
+  display: block; /* Make it block to center */
+  margin: 0 auto 25px auto; /* Center and add bottom margin */
+  padding: 10px 18px;
+  background-color: #dc3545; /* Red for destructive action */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.clear-button:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+.card-history-item {
+  border: 1px solid #5a4fcf; /* Purple border */
+  border-radius: 8px;
+  padding: 20px; /* More padding */
+  margin-bottom: 20px;
+  background-color: rgba(10, 4, 60, 0.8); /* Darker item background */
+  transition: background-color 0.3s ease;
+}
+
+.card-history-item:hover {
+  background-color: rgba(30, 10, 79, 0.8); /* Slightly lighter on hover */
+}
+
+.history-timestamp {
+  font-weight: bold;
+  color: #ffffff; /* White timestamp */
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.history-summary {
+  margin-bottom: 15px;
+}
+
+.summary-card {
+  display: block;
+  font-size: 0.95em; /* Slightly larger */
+  color: #d0d0ff; /* Light lavender */
+  margin-bottom: 5px;
+}
+
+.summary-card strong {
+  color: #e0e0e0; /* Lighter text for card name */
+}
+
+.view-button {
+  padding: 8px 15px;
+  background-color: #5a4fcf; /* Purple button */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-button:hover {
+  background-color: #7a6ff0; /* Lighter purple on hover */
+}
+
+/* --- Full Reading Modal Styles --- */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px; /* Add padding for smaller screens */
+}
+
+.modal-content {
+  background-color: #1e0a4f; /* Dark modal background */
+  color: #e0e0e0; /* Light text */
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #5a4fcf; /* Purple border */
+  max-width: 90%; /* Default max width */
+  width: 600px; /* Set a specific width for larger screens */
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(90, 79, 207, 0.4); /* Purple glow */
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2em; /* Larger close button */
+  cursor: pointer;
+  color: #a79aff; /* Lighter purple */
+  line-height: 1;
+  padding: 0;
+}
+
+.modal-close-button:hover {
+  color: #ffffff; /* White on hover */
+}
+
+.modal-content h3 {
+  color: #ffffff; /* White title */
+  text-align: center;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #5a4fcf;
+  padding-bottom: 10px;
+}
+
+.modal-cards-container {
+  margin-top: 20px;
+}
+
+.modal-card-detail {
+  border-bottom: 1px solid #3c1053; /* Darker purple separator */
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  overflow: hidden; /* Contains the floated image */
+}
+
+.modal-card-detail:last-child {
+  border-bottom: none; /* Remove border from last item */
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.modal-card-image {
+  max-width: 70px; /* Slightly smaller image */
+  height: auto;
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 5px;
+  border: 1px solid #5a4fcf; /* Purple border */
+  border-radius: 4px;
+}
+
+.modal-card-detail p {
+  margin-bottom: 5px; /* Space between paragraphs */
+}
+
+.modal-card-detail strong {
+  color: #ffffff; /* White card name */
+}
+
+.modal-card-interpretation {
+  font-size: 0.9em;
+  color: #d0d0ff; /* Light lavender interpretation text */
+  clear: left; /* Ensure text doesn't wrap weirdly around short images */
+}
+
+
+/* --- Responsiveness --- */
+
+@media (max-width: 768px) {
+  .App {
+    padding: 20px 3%; /* Adjust padding */
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .input-section {
+    flex-direction: column; /* Stack inputs */
+    padding: 15px;
+  }
+
+  .selector-container,
+  .input-container {
+    width: 90%; /* Make inputs wider */
+    margin-bottom: 15px;
+  }
+
+  .results-section {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 25px;
+  }
+
+  .card-history-item {
+    padding: 15px;
+  }
+
+  .summary-card {
+    font-size: 0.9em;
+  }
+
+  .modal-content {
+    max-width: 95%; /* Allow modal to be wider on small screens */
+    width: auto; /* Let it adjust */
+    padding: 20px;
+  }
+
+  .modal-card-image {
+    max-width: 60px; /* Smaller image in modal on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .view-button,
+  .clear-button {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+
+  .modal-content {
+    padding: 15px;
+  }
+
+  .modal-close-button {
+    font-size: 1.8em;
+    top: 5px;
+    right: 10px;
+  }
+
+  .modal-card-image {
+    max-width: 50px;
+  }
+}
